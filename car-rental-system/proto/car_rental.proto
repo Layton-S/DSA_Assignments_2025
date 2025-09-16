@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+package car_rental;
+
+option java_multiple_files = true;
+option java_package = "io.ballerina.examples.car_rental";
+option java_outer_classname = "CarRentalProto";
+
+service CarRentalService {
+    rpc AddCar(AddCarRequest) returns (AddCarResponse);
+    rpc CreateUsers(stream User) returns (CreateUsersResponse);
+    rpc UpdateCar(UpdateCarRequest) returns (UpdateCarResponse);
+    rpc RemoveCar(RemoveCarRequest) returns (CarsListResponse);
+    rpc ListAvailableCars(AvailableCarsRequest) returns (stream Car);
+    rpc SearchCar(SearchCarRequest) returns (SearchCarResponse);
+    rpc AddToCart(AddToCartRequest) returns (AddToCartResponse);
+    rpc PlaceReservation(PlaceReservationRequest) returns (PlaceReservationResponse);
+    rpc ListReservations(ListReservationsRequest) returns (ListReservationsResponse);
+}
+
+message Car {
+    string plate = 1;
+    string make = 2;
+    string model = 3;
+    int32 year = 4;
+    double daily_price = 5;
+    int32 mileage = 6;
+    string status = 7; // AVAILABLE, UNAVAILABLE
+}
+
+message User {
+    string username = 1;
+    string role = 2; // CUSTOMER, ADMIN
+}
+
+message AddCarRequest {
+    Car car = 1;
+}
+
+message AddCarResponse {
+    string plate = 1;
+    string message = 2;
+}
+
+message CreateUsersResponse {
+    int32 created = 1;
+    string message = 2;
+}
+
+message UpdateCarRequest {
+    string plate = 1;
+    Car car = 2;
+}
+
+message UpdateCarResponse {
+    bool ok = 1;
+    string message = 2;
+}
+
+message RemoveCarRequest {
+    string plate = 1;
+}
+
+message CarsListResponse {
+    repeated Car cars = 1;
+    string message = 2;
+}
+
+message AvailableCarsRequest {
+    string filter = 1;
+}
+
+message SearchCarRequest {
+    string plate = 1;
+}
+
+message SearchCarResponse {
+    bool found = 1;
+    Car car = 2;
+    string message = 3;
+}
+
+message AddToCartRequest {
+    string username = 1;
+    string plate = 2;
+    string start_date = 3;
+    string end_date = 4;
+}
+
+message AddToCartResponse {
+    bool ok = 1;
+    string message = 2;
+}
+
+message PlaceReservationRequest {
+    string username = 1;
+}
+
+message PlaceReservationResponse {
+    bool ok = 1;
+    repeated Reservation reservations = 2;
+    string message = 3;
+}
+
+message Reservation {
+    string username = 1;
+    string plate = 2;
+    string start_date = 3;
+    string end_date = 4;
+    int32 days = 5;
+    double total_price = 6;
+}
+
+message ListReservationsRequest {
+    // Empty for now, could add filtering later
+}
+
+message ListReservationsResponse {
+    repeated Reservation reservations = 1;
+    string message = 2;
+}
