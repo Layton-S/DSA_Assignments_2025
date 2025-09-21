@@ -25,11 +25,9 @@ final mysql:Client db = check new (
     user = "root",
     password = "password",
     port = 3306,
-    database = "tutorial"
+    database = "asset_managment"
 );
-```
 
----
 
 ## Running the Project
 
@@ -38,7 +36,7 @@ final mysql:Client db = check new (
 ```bash
 cd server
 bal run
-```
+
 
 Server runs on: `http://localhost:3000/api`
 
@@ -47,9 +45,7 @@ Server runs on: `http://localhost:3000/api`
 ```bash
 cd client
 bal run
-```
 
----
 
 ## API Endpoints
 
