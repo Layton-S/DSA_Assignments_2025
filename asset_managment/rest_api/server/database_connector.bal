@@ -6,5 +6,5 @@ final mysql:Client db = check new (
     user = "root",
     password = "password",
     port = 3306,
-    database = "tutorial"
+    database = "asset_managment"
 );

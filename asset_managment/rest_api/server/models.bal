@@ -27,7 +27,7 @@ public type Task record {
 public type WorkOrder record {
     string id;
     string description;
-    Status status;
+    int status;
     Task[] tasks;
 };
 
@@ -37,9 +37,18 @@ public type Asset record {
     string name;
     string faculty;
     string department;
-    Status status;
+    int status;
     string acquiredDate;
     Component[] components;
     Schedule[] schedules;
     WorkOrder[] workOrders;
 };
+
+public type AssetUpdate record {
+    string? name;
+    string? faculty;
+    string? department;
+    int? status;
+    string? acquiredDate;
+};
+
