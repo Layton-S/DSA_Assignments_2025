@@ -1,7 +1,7 @@
 ```markdown
 # Asset Management REST API
 
-This project is a Ballerina-based REST API for managing institutional assets such as laboratory equipment, vehicles, and servers. It connects to a MySQL database for persistence and provides CRUD operations for assets, components, schedules, work orders, and tasks.
+This project is a Ballerina-based REST API for managing institutional assets such as laboratory equipment, vehicles, etc. It connects to a MySQL database for persistence and provides CRUD operations for assets, components, schedules, work orders, and tasks.
 
 ## Features
 
